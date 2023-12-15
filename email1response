@@ -1,0 +1,41 @@
+Dear John,
+
+Thank you for reaching out to Piano for assistance with creating a login button for your website. We're glad to help you with your inquiry.
+
+First you need to locate the login page on your website source code and then locate the login form, before the closing tag of the form, add a button tag with type 'submit' before the closing tag of the form as below
+
+
+<button type='submit'>Login</button>
+
+
+After the form add the below code snippet to initialize and check for successful login and/or logout
+
+<script>
+tp = window.tp || [];
+tp.push(['setUsePianoIdUserProvider', true]);
+tp.push(["init", function() {
+  tp.pianoId.init({
+    displayMode: 'inline',
+    containerSelector: '#login-form',
+
+    // Callback function for successful login
+    loggedIn: function(data) {
+      console.log('user ', data.user, ' logged in with token', data.token);
+    },
+
+    // Callback function for successful logout
+    loggedOut: function() {
+      console.log('user logged out');
+    }
+  });
+}]);
+</script>
+
+
+This code snippet provides a streamlined approach to integrating Piano ID using the tp framework, making it easier to manage the login process and handle user authentication. It also simplifies the process of defining callback functions for login and logout events.
+
+We hope this code snippet and explanation are helpful. Please let us know if you have any further questions or require additional assistance.
+
+Sincerely,
+
+Piano Support Team
